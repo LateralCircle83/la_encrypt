@@ -24,13 +24,13 @@ def getAction_termux(_as=None,_data=None):
 def getAction_line(_as=None,_data=None):
   def clip(__data):
     print(__data)
-    pyperclip.set(__data)
+    pyperclip.copy(__data)
     getAction_line()
   return ((not _as) and getAction_line(input("in/de:"),input("输入:")))or(_as=="de"and clip(outfurr(_data,[["喵", "嗷"], ["呜"], ["~"], ["咪"]])))or(clip(infurr(_data,[["喵", "嗷"], ["呜"], ["~"], ["咪"]])))
 
 
 import termux_api
-if termux_api.isTermux:
+if termux_api.isTermux():
   getAction_termux()
 else:
   import pyperclip
